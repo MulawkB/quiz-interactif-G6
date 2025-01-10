@@ -60,6 +60,14 @@ button:hover {
   background-color: #ffcdd2 !important; /* rouge clair */
 }
 
+.valid {
+  color: #12aa17;
+}
+
+.invalid {
+  color: #f5192f;
+}
+
 #timer-div {
   margin-top: 10px;
   font-weight: bold;

@@ -1,13 +1,12 @@
-// quiz.js
 import {
-  getElement,
-  showElement,
-  hideElement,
-  setText,
   createAnswerButton,
-  updateScoreDisplay,
+  getElement,
+  hideElement,
   lockAnswers,
   markCorrectAnswer,
+  setText,
+  showElement,
+  updateScoreDisplay,
 } from "./dom.js";
 import {
   loadFromLocalStorage,
@@ -38,6 +37,7 @@ const questions = [
   },
 ];
 
+let userAnswers = [];
 let currentQuestionIndex = 0;
 let score = 0;
 let bestScore = loadFromLocalStorage("bestScore", 0);
@@ -121,6 +121,7 @@ function selectAnswer(index, btn) {
   clearInterval(timerId);
 
   const q = questions[currentQuestionIndex];
+  userAnswers[currentQuestionIndex] = q.answers[index];
   if (index === q.correct) {
     score++;
     btn.classList.add("correct");
@@ -153,11 +154,38 @@ function endQuiz() {
     saveToLocalStorage("bestScore", bestScore);
   }
   setText(bestScoreEnd, bestScore);
+  showSummary();
+}
+
+function showSummary() {
+  const resultDiv = resultScreen.querySelector(".recap");
+  if (resultDiv) {
+    resultDiv.remove();
+  }
+
+  const answersDiv = document.createElement("div");
+  answersDiv.classList.add("recap");
+  answersDiv.innerHTML = "<h3>Récapitulatif des réponses</h3>";
+
+  questions.forEach((q, index) => {
+    const questionElement = document.createElement("div");
+    const userAnswer = userAnswers[index] || "Aucune réponse sélectionnée";
+    questionElement.innerHTML =
+    "<p>Question n°" + (index + 1) + " : " + q.text + "</p>" +
+    "<p>Réponse correcte : " + q.answers[q.correct] + "</p>" +
+    "<p>Votre réponse : " + userAnswer + "</p>" +
+    "<p>Vous avez " + (userAnswer === q.answers[q.correct] ? "répondu <span class='valid'>correctement</span>" : "répondu <span class='invalid'>incorrectement</span>") + "</p>" + "<hr/>";
+    answersDiv.appendChild(questionElement);
+  });
+
+  resultScreen.appendChild(answersDiv);
 }
 
 function restartQuiz() {
   hideElement(resultScreen);
   showElement(introScreen);
   randomize(questions);
+
+  userAnswers = [];
   setText(bestScoreValue, bestScore);
 }
