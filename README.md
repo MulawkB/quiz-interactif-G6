@@ -1,4 +1,4 @@
-# Quiz Dynamique
+# Quiz Dynamique.
 
 Un quiz interactif en HTML/CSS/JS permettant :
 - Un **timer** par question,
