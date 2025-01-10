@@ -30,6 +30,12 @@ const questions = [
     correct: 2,
     timeLimit: 5,
   },
+  {
+    text: "Quelle est la capitale de l'Espagne ?",
+    answers: ["Madrid", "Barcelone", "Valence", "Séville"],
+    correct: 0,
+    timeLimit: 10,
+  },
 ];
 
 let currentQuestionIndex = 0;
@@ -75,6 +81,15 @@ function startQuiz() {
 
   showQuestion();
 }
+/* l'aléatoire des questions */
+function randomize(array){
+  for (let i = array.length - 1; i > 0; i--) {
+    const e = Math.floor(Math.random() * (i + 1));
+    [array[i], array[e]] = [array[e], array[i]];
+  }
+}
+randomize(questions);
+/* fin aléatoire */
 
 function showQuestion() {
   clearInterval(timerId);
@@ -143,6 +158,6 @@ function endQuiz() {
 function restartQuiz() {
   hideElement(resultScreen);
   showElement(introScreen);
-
+  randomize(questions);
   setText(bestScoreValue, bestScore);
 }
