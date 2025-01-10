@@ -1,4 +1,4 @@
-# Quiz Dynamique
+# Quiz Dynamique.
 
 Un quiz interactif en HTML/CSS/JS permettant :
 - Un **timer** par question,
@@ -43,3 +43,8 @@ Un quiz interactif en HTML/CSS/JS permettant :
 ## Auteurs
 
 Ce projet sert d’exemple pédagogique pour comprendre la structure d’une application web simple, sa documentation et son organisation agile (backlog, user stories) et Gitflow.
+
+## SCSS
+
+Taper cette commande dans le terminal pour voir les modifications en temps réel 
+sass ./assets/css/main.scss ./style.css --watch
