@@ -5,22 +5,23 @@ h1 {
 .notice {
   font-style: italic;
   margin-bottom: 15px;
-  color: #555;
+  color: #aa497a;
 }
 
 button {
   margin: 10px auto;
   padding: 10px 20px;
   cursor: pointer;
-  background-color: #1976d2;
-  color: #fff;
+  background-color: #6A1E55;
+  color: #d66fa2;
   border: none;
   border-radius: 6px;
   transition: background-color 0.3s;
-}
 
-button:hover {
-  background-color: #1565c0;
+  &:hover {
+    background-color: #d66fa2;
+    color: #6A1E55;
+  }
 }
 
 .hidden {
@@ -32,7 +33,7 @@ button:hover {
 #result-screen {
   max-width: 600px;
   margin: 0 auto 20px;
-  background: #fff;
+  background: #3B1C32;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -46,10 +47,10 @@ button:hover {
   color: #333;
   border-radius: 4px;
   transition: background-color 0.3s;
-}
 
-#answers button:hover {
-  background-color: #e0e0e0;
+  &:hover {
+    background-color: #e0e0e0;
+  }
 }
 
 .correct {
